@@ -2,7 +2,7 @@
 
 _Because team composition matters!_
 
-Helps Overwatch teams
+Helps Overwatch teams choose an appropriate counter-composition based upon the enemy team's choices.
 
 ## Building
 
