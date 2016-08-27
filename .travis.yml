@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - '6'
+
+cache:
+  directories:
+    - node_modules
+    - docs/vendor
+
+install: npm install
+
+script: npm run publish
+
+after_success:
+  - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash deploy.sh
+
+env:
+  global:
+    - GH_REF: github.com/Overcomplicated/website.git
+    - secure: GlH9K8GGEF99dJjBt1vAepEH4/GC+FIeJXF80xmYntchkM9Ly+uJIkImenKYwbDcHeQbb+ZbWZE1w7EnZWlvngpQCICoahXQAeyB7UlANhEvkRDyWsGwqnHxnfCU7KEwS82XEtkkGchnc5Od4c/hAjKa460rUSRIQqqQdlLFFfdcV4RWU8T3Dgja6PyBd4Vu8ApTzV38S81RwnURyKUo9MtQ2W9kH6r4hccF6LF5U3+Klmztvarss6kIl7zJ4jXBpaT864i/Quq7dNCZS/FhGme1UT6y05AYEFvopNhCUkLHwGw9K8K/K+Cb4WhSrW763gjuziQvyfuwJ+UPE81JiFl95zME9F8NKB470njUWAe6j6QvwqZXmGmD/9tv4NC2sVvAJbpihCxFnYJ040SzoK9HZr7kx2aw+MfPTdo0qzoLlBEluVN9GOHoq1vm7zPG6bYL/SaBQpV1AKLNIsQwv3ws0fXwHXcEqz9JVNwBpT7uuidN1XjH9CTHy3YffEzYce1l1asSbubCyOlBipUy4ID0iBuMsS78iEqX7ubXT8e4PPhEFUpOSzGcviLtMHho7TWWQOAoJK/RBEUmqTxeyO4e3TqnJe0n30Sjx80mTJXrrn8GQMsr94u7CPqnE2SPJNXEo60xbhWjf2UNIiU4BF/qdQW1WPDnOayvnrQsn50=

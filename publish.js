@@ -32,6 +32,7 @@ Promise.all([
   cp('node_modules/rxjs/', 'docs/vendor/rxjs/', { filter: js }),
   cp('systemjs.config.js', 'docs/systemjs.config.js'),
   cp('index.html', 'docs/index.html'),
+  cp('CNAME', 'docs/CNAME'),
   cp('assets/', 'docs/assets/'),
   cp('css/', 'docs/css/'),
 ]).catch((err) => {
