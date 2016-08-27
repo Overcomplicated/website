@@ -10,6 +10,6 @@ import { HeroesService } from './services/heroes.service';
   imports: [BrowserModule],
   declarations: [TeamRosterComponent, HeroPortraitComponent, HeroSelectorComponent, AppComponent],
   bootstrap: [AppComponent],
-  providers: [HeroesService]
+  providers: [HeroesService],
 })
 export class AppModule { }

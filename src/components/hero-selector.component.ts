@@ -30,7 +30,7 @@ import { HeroesService, IHero } from '../services/heroes.service';
       width: 100%;
     }
   `],
-  providers: [HeroesService]
+  providers: [HeroesService],
 })
 export class HeroSelectorComponent {
 

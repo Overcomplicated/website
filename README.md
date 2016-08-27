@@ -8,7 +8,7 @@ Helps Overwatch teams choose an appropriate counter-composition based upon the e
 
 ```bash
 npm install
-npm run publish
+npm run build
 npm start
 ```
 

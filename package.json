@@ -4,17 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rimraf build docs",
     "typings": "cd src && typings i",
+    "clean": "rimraf build docs",
+    "lint": "tslint -c src/tslint.json -e src/**/*.d.ts src/**/*.ts",
     "postinstall": "npm run typings",
-    "preprebuild": "npm run lint",
-    "prebuild": "npm run clean",
+    "prebuild": "npm run lint && npm run clean",
     "build": "tsc -p src",
-    "prepublish": "npm run build",
-    "publish": "node publish.js",
+    "postbuild": "node publish.js",
     "start": "http-server docs",
-    "lint": "tslint -c src/tslint.json -e src/**/*.d.ts src/**/*.ts"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "David Wood <david.p.wood@gmail.com>",
   "license": "MIT",
