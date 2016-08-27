@@ -1,3 +1,5 @@
+set -e
+
 echo "Starting deploy..."
 
 [ -z "$TRAVIS_BUILD_NUMBER" ] && echo "TRAVIS_BUILD_NUMBER not set" && exit 1
@@ -18,5 +20,13 @@ GH_PAGES_BRANCH=gh-pages
   git config user.email "david.p.wood+travis@gmail.com"
   git add -A
   git commit -m "Deploy build ${TRAVIS_BUILD_NUMBER} (${TRAVIS_COMMIT})"
+
+  set +e
+  
   git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" $GH_PAGES_BRANCH > /dev/null 2>&1
+
+  if [ $? -ne 0 ]; then
+    echo "git push failed."
+    exit 1
+  fi
 )
