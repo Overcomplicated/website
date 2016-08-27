@@ -1,0 +1,24 @@
+{
+  "heroes": [
+    {
+      "name": "zarya",
+      "displayName": "Zarya",
+      "counters": {
+        "strong": [
+          {
+            "name": "dva",
+            "rating": "medium",
+            "description": "D.Va cannot block Zarya's Particle Beam"
+          }
+        ],
+        "weak": [
+          {
+            "name": "pharah",
+            "rating": "low",
+            "description": "Zarya cannot escape Pharah's rockets, and will often be unable to reach her with Particle Beam"
+          }
+        ]
+      }
+    }
+  ]
+}

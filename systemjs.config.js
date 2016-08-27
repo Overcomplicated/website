@@ -3,8 +3,9 @@
 
   var map = {
     'app': 'app',
+
+    '@angular': 'vendor/@angular',
     'rxjs': 'vendor/rxjs',
-    '@angular': 'vendor/@angular'
   };
 
   var packages = {
@@ -13,18 +14,15 @@
   };
 
   var angularPackages = [
-    '@angular/common',
-    '@angular/compiler',
-    '@angular/core',
-    '@angular/http',
-    '@angular/platform-browser',
-    '@angular/platform-browser-dynamic',
-    '@angular/router',
+    'common',
+    'compiler',
+    'core',
+    'http',
+    'platform-browser',
+    'platform-browser-dynamic',
   ];
 
-  angularPackages.forEach(function (pkgName) {
-    packages[pkgName] = { main: 'index.js', defaultExtension: 'js' };
-  });
+  angularPackages.forEach(pkg => packages['@angular/' + pkg] = { main: 'bundles/' + pkg + '.umd.min.js', defaultExtension: 'js' });
 
   SystemJS.config({
     map: map,
