@@ -1,4 +1,4 @@
-# Overcomomplicated
+# Overcomomplicated [![Build Status](https://travis-ci.org/Overcomplicated/website.svg?branch=master)](https://travis-ci.org/Overcomplicated/website)
 
 _Because team composition matters!_
 
