@@ -1,8 +1,8 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
-import { Hero, Heroes } from '../heroes';
+import { IHero, Heroes } from '../heroes';
 
-interface TeamMember {
-  hero: Hero;
+interface ITeamMember {
+  hero: IHero;
   selecting?: boolean;
 }
 
@@ -37,13 +37,13 @@ function clone(thing: any): any {
 
       border: solid 1px red;
     }
-  `]
+  `],
 })
 export class TeamRosterComponent implements OnInit {
-  private teamMembers: TeamMember[];
-  private selectedTeamMember: TeamMember;
+  private teamMembers: ITeamMember[];
+  private selectedTeamMember: ITeamMember;
 
-  @Output() rosterChanged = new EventEmitter();
+  @Output() private rosterChanged = new EventEmitter();
 
   constructor() {
     this.teamMembers = [
@@ -52,11 +52,27 @@ export class TeamRosterComponent implements OnInit {
       { hero: clone(Heroes.Lucio) },
       { hero: clone(Heroes.Genji) },
       { hero: clone(Heroes.Reinhardt) },
-      { hero: clone(Heroes.Zenyatta) }
+      { hero: clone(Heroes.Zenyatta) },
     ];
   }
 
   public ngOnInit() {
+    this.emitRosterChanged();
+  }
+
+  public selectHero(teamMember: ITeamMember) {
+    this.unselectTeamMember(this.selectedTeamMember);
+
+    this.selectedTeamMember = teamMember;
+    teamMember.selecting = true;
+  }
+
+  public heroSelected($event: IHero) {
+    this.unselectTeamMember(this.selectedTeamMember);
+
+    this.selectedTeamMember.hero = $event;
+    this.selectedTeamMember = undefined;
+
     this.emitRosterChanged();
   }
 
@@ -65,24 +81,9 @@ export class TeamRosterComponent implements OnInit {
     this.rosterChanged.emit(roster);
   }
 
-  private unselectTeamMember(teamMember: TeamMember) {
-    if (teamMember)
+  private unselectTeamMember(teamMember: ITeamMember) {
+    if (teamMember) {
       teamMember.selecting = false;
-  }
-
-  public selectHero(teamMember: TeamMember) {
-    this.unselectTeamMember(this.selectedTeamMember);
-    
-    this.selectedTeamMember = teamMember;
-    teamMember.selecting = true;
-  }
-
-  public heroSelected($event: Hero) {
-    this.unselectTeamMember(this.selectedTeamMember);
-
-    this.selectedTeamMember.hero = $event;
-    this.selectedTeamMember = undefined;
-    
-    this.emitRosterChanged();
+    }
   }
 }

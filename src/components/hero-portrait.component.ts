@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Hero, HeroRole } from '../heroes';
+import { IHero, HeroRole } from '../heroes';
 
 @Component({
   selector: 'hero-portrait',
@@ -32,25 +32,27 @@ import { Hero, HeroRole } from '../heroes';
     .tank {
       background-color: grey;
     }
-  `]
+  `],
 })
 export class HeroPortraitComponent {
-  @Input() hero: Hero;
-  @Input() small: boolean; 
+  // tslint:disable-next-line:no-unused-variable
+  @Input() private hero: IHero;
+  // tslint:disable-next-line:no-unused-variable
+  @Input() private small: boolean;
 
   public isSupport(role: HeroRole): boolean {
-    return role == HeroRole.Support;
+    return role === HeroRole.Support;
   }
 
   public isOffense(role: HeroRole): boolean {
-    return role == HeroRole.Offense;
+    return role === HeroRole.Offense;
   }
 
   public isDefense(role: HeroRole): boolean {
-    return role == HeroRole.Defense;
+    return role === HeroRole.Defense;
   }
 
   public isTank(role: HeroRole): boolean {
-    return role == HeroRole.Tank;
+    return role === HeroRole.Tank;
   }
 }

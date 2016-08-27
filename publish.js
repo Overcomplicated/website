@@ -13,7 +13,7 @@ function cp(from, to, options) {
 }
 
 function endsWith(s, suffix) {
-    return s.indexOf(suffix, s.length - suffix.length) !== -1;
+  return s.indexOf(suffix, s.length - suffix.length) !== -1;
 };
 
 const matchJS = /^.*\.js(\.map)?$/i;

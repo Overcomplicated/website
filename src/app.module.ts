@@ -8,6 +8,6 @@ import { HeroSelectorComponent } from './components/hero-selector.component';
 @NgModule({
   imports: [BrowserModule],
   declarations: [TeamRosterComponent, HeroPortraitComponent, HeroSelectorComponent, AppComponent],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

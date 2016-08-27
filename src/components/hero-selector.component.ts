@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { Hero, AllHeroes } from '../heroes';
+import { IHero, AllHeroes } from '../heroes';
 
 @Component({
   selector: 'hero-selector',
@@ -29,16 +29,16 @@ import { Hero, AllHeroes } from '../heroes';
     .hero-selector .hero img {
       width: 100%;
     }
-  `]
+  `],
 })
 export class HeroSelectorComponent {
-  heroes: Hero[] = AllHeroes;
 
-  @Output() heroSelected = new EventEmitter();
+  // tslint:disable-next-line:no-unused-variable
+  private heroes: IHero[] = AllHeroes;
 
-  constructor() { }
+  @Output() private heroSelected = new EventEmitter();
 
-  public heroClicked(hero: Hero) {
+  public heroClicked(hero: IHero) {
     this.heroSelected.emit(hero);
   }
 }

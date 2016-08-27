@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CompositionAnalyserService } from '../services/composition-analyser.service'
+import { CompositionAnalyserService } from '../services/composition-analyser.service';
 
 @Component({
   selector: 'my-app',
@@ -24,7 +24,7 @@ import { CompositionAnalyserService } from '../services/composition-analyser.ser
       margin-right: auto;
     }
   `],
-  providers: [CompositionAnalyserService]
+  providers: [CompositionAnalyserService],
 })
 export class AppComponent {
   private enemyRoster: string[];
@@ -32,11 +32,13 @@ export class AppComponent {
 
   constructor(private analyserService: CompositionAnalyserService) { }
 
+  // tslint:disable-next-line:no-unused-variable
   private enemyRosterChanged(roster: string[]) {
     this.enemyRoster = roster;
     this.analyseRoster();
   }
 
+  // tslint:disable-next-line:no-unused-variable
   private allyRosterChanged(roster: string[]) {
     this.allyRoster = roster;
     this.analyseRoster();
