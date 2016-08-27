@@ -7,13 +7,15 @@ import { CompositionAnalyserService } from '../services/composition-analyser.ser
     <h1>Overwatch Composition Helper</h1>
     <div class="wrap">
       <div>
-        <team-roster (rosterChanged)="enemyRosterChanged($event)"></team-roster>
+        <team-roster [roster]="enemyRoster" (rosterChange)="enemyRosterChanged($event)" #enemyTeam>
+        </team-roster>
       </div>
       <div>
         <p>VS</p>
       </div>
       <div>
-        <team-roster (rosterChanged)="allyRosterChanged($event)"></team-roster>
+        <team-roster [roster]="allyRoster" (rosterChange)="allyRosterChanged($event)" #allyTeam>
+        </team-roster>
       </div>
     </div>`,
   styles: [`
@@ -27,8 +29,8 @@ import { CompositionAnalyserService } from '../services/composition-analyser.ser
   providers: [CompositionAnalyserService],
 })
 export class AppComponent {
-  private enemyRoster: string[];
-  private allyRoster: string[];
+  private enemyRoster: string[] = ['mccree', 'roadhog', 'lucio', 'genji', 'reinhardt', 'zenyatta'];
+  private allyRoster: string[] = ['mccree', 'roadhog', 'lucio', 'genji', 'reinhardt', 'zenyatta'];
 
   constructor(private analyserService: CompositionAnalyserService) { }
 

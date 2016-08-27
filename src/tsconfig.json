@@ -7,7 +7,7 @@
     "noEmitOnError": true,
     "outDir": "../docs/app",
     "target": "es5",
-    "sourceMap": true
+    "inlineSourceMap": true
   },
   "exclude": [
     "node_modules"

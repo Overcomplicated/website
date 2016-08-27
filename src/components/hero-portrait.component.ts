@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IHero, HeroRole } from '../heroes';
+import { IHero, HeroRole } from '../services/heroes.service';
 
 @Component({
   selector: 'hero-portrait',

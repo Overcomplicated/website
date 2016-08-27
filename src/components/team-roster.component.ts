@@ -1,20 +1,16 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
-import { IHero, Heroes } from '../heroes';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { HeroesService, IHero } from '../services/heroes.service';
 
 interface ITeamMember {
   hero: IHero;
   selecting?: boolean;
 }
 
-function clone(thing: any): any {
-  return JSON.parse(JSON.stringify(thing));
-}
-
 @Component({
   selector: 'team-roster',
   template: `
     <div class="enemy-team">
-      <hero-portrait *ngFor="let teamMember of teamMembers"
+      <hero-portrait *ngFor="let teamMember of _roster"
                      [hero]="teamMember.hero"
                      (click)="selectHero(teamMember)"
                      [class.selecting]="teamMember.selecting">
@@ -38,27 +34,23 @@ function clone(thing: any): any {
       border: solid 1px red;
     }
   `],
+  providers: [HeroesService],
 })
-export class TeamRosterComponent implements OnInit {
-  private teamMembers: ITeamMember[];
+export class TeamRosterComponent {
+  private _roster: ITeamMember[];
   private selectedTeamMember: ITeamMember;
 
-  @Output() private rosterChanged = new EventEmitter();
+  @Output() private rosterChange = new EventEmitter<string[]>();
 
-  constructor() {
-    this.teamMembers = [
-      { hero: clone(Heroes.McCree) },
-      { hero: clone(Heroes.Roadhog) },
-      { hero: clone(Heroes.Lucio) },
-      { hero: clone(Heroes.Genji) },
-      { hero: clone(Heroes.Reinhardt) },
-      { hero: clone(Heroes.Zenyatta) },
-    ];
+  @Input() set roster(heroes: string[]) {
+    this._roster = heroes.map(name => {
+      const hero = this.heroesService.getHero(name);
+      const teamMember: ITeamMember = { hero: hero };
+      return teamMember;
+    });
   }
 
-  public ngOnInit() {
-    this.emitRosterChanged();
-  }
+  constructor(private heroesService: HeroesService) {}
 
   public selectHero(teamMember: ITeamMember) {
     this.unselectTeamMember(this.selectedTeamMember);
@@ -67,18 +59,17 @@ export class TeamRosterComponent implements OnInit {
     teamMember.selecting = true;
   }
 
-  public heroSelected($event: IHero) {
+  public heroSelected(hero: IHero) {
     this.unselectTeamMember(this.selectedTeamMember);
 
-    this.selectedTeamMember.hero = $event;
+    this.selectedTeamMember.hero = hero;
     this.selectedTeamMember = undefined;
 
     this.emitRosterChanged();
   }
 
   private emitRosterChanged() {
-    const roster = this.teamMembers.map(tm => tm.hero.name);
-    this.rosterChanged.emit(roster);
+    this.rosterChange.emit(this._roster.map(member => member.hero.name));
   }
 
   private unselectTeamMember(teamMember: ITeamMember) {
