@@ -5,12 +5,18 @@
     'app': 'app',
 
     '@angular': 'vendor/@angular',
-    'rxjs': 'vendor/rxjs',
+    'rxjs': 'vendor/rxjs/bundles/Rx.umd.min.js',
+    'rxjs/add/operator/map': 'vendor/rxjs/bundles/Rx.umd.min.js',
+    'rxjs/Rx': 'vendor/rxjs/bundles/Rx.umd.min.js',
+    'rxjs/Subject': 'vendor/rxjs/bundles/Rx.umd.min.js',
+    'rxjs/observable/PromiseObservable': 'vendor/rxjs/bundles/Rx.umd.min.js',
+    'rxjs/add/observable/fromEvent': 'vendor/rxjs/bundles/Rx.umd.min.js',
+    'rxjs/operator/toPromise': 'vendor/rxjs/bundles/Rx.umd.min.js',
+    'rxjs/Observable': 'vendor/rxjs/bundles/Rx.umd.min.js',
   };
 
   var packages = {
-    'app': { main: 'main.js', defaultExtension: 'js' },
-    'rxjs': { defaultExtension: 'js' }
+    'app': { main: 'main.js', defaultExtension: 'js' }
   };
 
   var angularPackages = [
@@ -26,6 +32,9 @@
 
   SystemJS.config({
     map: map,
-    packages: packages
+    packages: packages,
+    paths: {
+      'rxjs/Subject': 'vendor/rxjs/bundles/Rx.umd.js'
+    }
   });
 })(this);
