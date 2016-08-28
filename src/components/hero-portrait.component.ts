@@ -13,6 +13,10 @@ import { IHero, HeroRole } from '../services/heroes.service';
       <img src="assets/heroes/{{ small ? 'small/' : '' }}{{hero.name}}.png" />
     </div>`,
   styles: [`
+    :host {
+      cursor: pointer;
+    }
+
     .hero-portrait {
       border: solid 1px grey;
     }

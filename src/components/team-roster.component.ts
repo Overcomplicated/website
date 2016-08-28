@@ -33,6 +33,7 @@ interface ITeamMember {
       filter: alpha(opacity=40);
 
       border: solid 1px red;
+      cursor: default;
     }
   `],
   providers: [HeroesService],
