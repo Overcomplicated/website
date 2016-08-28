@@ -4,18 +4,35 @@ import { HeroesService, IHero } from '../services/heroes.service';
 interface ITeamMember {
   hero: IHero;
   selecting?: boolean;
+  strengths?: string[];
+  weaknesses?: string[];
+}
+
+export interface IHeroWeaknesses {
+  [name: string]: string[];
 }
 
 @Component({
   selector: 'team-roster',
   template: `
     <div class="enemy-team">
-      <hero-portrait *ngFor="let teamMember of _roster"
-                     [hero]="teamMember.hero"
-                     (click)="selectHero(teamMember)"
-                     [class.selecting]="teamMember.selecting"
-                     [class.weak]="!!weaknesses && weaknesses.indexOf('teamMember.hero.name') > -1">
-      </hero-portrait>
+      <div *ngFor="let teamMember of _roster">
+        <hero-portrait [hero]="teamMember.hero"
+                       (click)="selectHero(teamMember)"
+                       [class.selecting]="teamMember.selecting"
+                       [class.weak]="!!weaknesses && weaknesses.indexOf('teamMember.hero.name') > -1">
+        </hero-portrait>
+        <span *ngFor="let strength of teamMember.strengths"
+              class="icon is-large strength"
+              title="{{getHero(strength).displayName}}">
+          <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+        </span>
+        <span *ngFor="let weakness of teamMember.weaknesses"
+              class="icon is-large weakness"
+              title="{{getHero(weakness).displayName}}">
+          <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+        </span>
+      </div>
     </div>
     <hero-selector *ngIf="!!selectedTeamMember"
                    (heroSelected)="heroSelected($event)">
@@ -25,14 +42,22 @@ interface ITeamMember {
     .enemy-team {
       display: flex;
       justify-content: space-around;
-      border: solid 1px;
+    }
+
+    .icon.weakness {
+      color: #e00;
+      text-shadow: 1px 1px 1px #222;
+    }
+
+    .icon.strength {
+      color: #0e0;
+      text-shadow: 1px 1px 1px #222;
     }
 
     .selecting {
       opacity: 0.4;
       filter: alpha(opacity=40);
 
-      border: solid 1px red;
       cursor: default;
     }
   `],
@@ -53,7 +78,11 @@ export class TeamRosterComponent {
   }
 
   // tslint:disable-next-line:no-unused-variable
-  @Input() private weaknesses: { [name: string]: string[] };
+  @Input() private set weaknesses(data: IHeroWeaknesses) {
+    this._roster.forEach(member => {
+      member.weaknesses = data[member.hero.name] || [];
+    });
+  }
 
   constructor(private heroesService: HeroesService) {}
 
@@ -81,5 +110,10 @@ export class TeamRosterComponent {
     if (teamMember) {
       teamMember.selecting = false;
     }
+  }
+
+  // tslint:disable-next-line:no-unused-variable
+  private getHero(name: string): IHero {
+    return this.heroesService.getHero(name);
   }
 }

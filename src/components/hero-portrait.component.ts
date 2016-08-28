@@ -18,7 +18,6 @@ import { IHero, HeroRole } from '../services/heroes.service';
     }
 
     .hero-portrait {
-      border: solid 1px grey;
     }
 
     .support {

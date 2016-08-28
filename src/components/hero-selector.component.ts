@@ -19,11 +19,9 @@ import { HeroesService, IHero } from '../services/heroes.service';
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      border: solid 1px;
     }
 
     .hero-selector .hero {
-      border: solid 1px grey;
     }
 
     .hero-selector .hero img {

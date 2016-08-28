@@ -7,6 +7,7 @@ export enum HeroRole {
 
 export interface IHero {
   name: string;
+  displayName: string;
   role: HeroRole;
   counters?: {
     strong: {
@@ -20,6 +21,7 @@ export interface IHero {
 
 export const Ana: IHero = {
   name: "ana",
+  displayName: "Ana",
   role: HeroRole.Support,
   counters: {
     strong: [
@@ -49,6 +51,7 @@ export const Ana: IHero = {
 
 export const Bastion: IHero = {
   name: "bastion",
+  displayName: "Bastion",
   role: HeroRole.Defense,
   counters: {
     strong: [
@@ -78,6 +81,7 @@ export const Bastion: IHero = {
 
 export const Dva: IHero = {
   name: "dva",
+  displayName: "D.Va",
   role: HeroRole.Tank,
   counters: {
     strong: [
@@ -107,6 +111,7 @@ export const Dva: IHero = {
 
 export const Genji: IHero = {
   name: "genji",
+  displayName: "Genji",
   role: HeroRole.Offense,
   counters: {
     strong: [
@@ -136,6 +141,7 @@ export const Genji: IHero = {
 
 export const Hanzo: IHero = {
   name: "hanzo",
+  displayName: "Hanzo",
   role: HeroRole.Defense,
   counters: {
     strong: [
@@ -165,6 +171,7 @@ export const Hanzo: IHero = {
 
 export const Junkrat: IHero = {
   name: "junkrat",
+  displayName: "Junkrat",
   role: HeroRole.Defense,
   counters: {
     strong: [
@@ -194,6 +201,7 @@ export const Junkrat: IHero = {
 
 export const Lucio: IHero = {
   name: "lucio",
+  displayName: "Lúcio",
   role: HeroRole.Support,
   counters: {
     strong: [
@@ -223,6 +231,7 @@ export const Lucio: IHero = {
 
 export const McCree: IHero = {
   name: "mccree",
+  displayName: "McCree",
   role: HeroRole.Offense,
   counters: {
     strong: [
@@ -252,6 +261,7 @@ export const McCree: IHero = {
 
 export const Mei: IHero = {
   name: "mei",
+  displayName: "Mei",
   role: HeroRole.Defense,
   counters: {
     strong: [
@@ -281,6 +291,7 @@ export const Mei: IHero = {
 
 export const Mercy: IHero = {
   name: "mercy",
+  displayName: "Mercy",
   role: HeroRole.Support,
   counters: {
     strong: [],
@@ -300,6 +311,7 @@ export const Mercy: IHero = {
 
 export const Pharah: IHero = {
   name: "pharah",
+  displayName: "Pharah",
   role: HeroRole.Offense,
   counters: {
     strong: [
@@ -329,6 +341,7 @@ export const Pharah: IHero = {
 
 export const Reaper: IHero = {
   name: "reaper",
+  displayName: "Reaper",
   role: HeroRole.Offense,
   counters: {
     strong: [
@@ -358,6 +371,7 @@ export const Reaper: IHero = {
 
 export const Reinhardt: IHero = {
   name: "reinhardt",
+  displayName: "Reinhardt",
   role: HeroRole.Tank,
   counters: {
     strong: [
@@ -387,6 +401,7 @@ export const Reinhardt: IHero = {
 
 export const Roadhog: IHero = {
   name: "roadhog",
+  displayName: "Roadhog",
   role: HeroRole.Tank,
   counters: {
     strong: [
@@ -416,6 +431,7 @@ export const Roadhog: IHero = {
 
 export const Soldier76: IHero = {
   name: "soldier76",
+  displayName: "Soldier: 76",
   role: HeroRole.Offense,
   counters: {
     strong: [
@@ -445,6 +461,7 @@ export const Soldier76: IHero = {
 
 export const Symmetra: IHero = {
   name: "symmetra",
+  displayName: "Symmetra",
   role: HeroRole.Support,
   counters: {
     strong: [
@@ -474,6 +491,7 @@ export const Symmetra: IHero = {
 
 export const Torbjorn: IHero = {
   name: "torbjorn",
+  displayName: "Torbjörn",
   role: HeroRole.Defense,
   counters: {
     strong: [
@@ -503,6 +521,7 @@ export const Torbjorn: IHero = {
 
 export const Tracer: IHero = {
   name: "tracer",
+  displayName: "Tracer",
   role: HeroRole.Offense,
   counters: {
     strong: [
@@ -532,6 +551,7 @@ export const Tracer: IHero = {
 
 export const Widowmaker: IHero = {
   name: "widowmaker",
+  displayName: "Widowmaker",
   role: HeroRole.Defense,
   counters: {
     strong: [
@@ -561,6 +581,7 @@ export const Widowmaker: IHero = {
 
 export const Winston: IHero = {
   name: "winston",
+  displayName: "Winston",
   role: HeroRole.Tank,
   counters: {
     strong: [
@@ -590,6 +611,7 @@ export const Winston: IHero = {
 
 export const Zarya: IHero = {
   name: "zarya",
+  displayName: "Zarya",
   role: HeroRole.Tank,
   counters: {
     strong: [
@@ -619,6 +641,7 @@ export const Zarya: IHero = {
 
 export const Zenyatta: IHero = {
   name: "zenyatta",
+  displayName: "Zenyatta",
   role: HeroRole.Support,
   counters: {
     strong: [

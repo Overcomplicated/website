@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CompositionAnalyserService } from '../services/composition-analyser.service';
+import { IHeroWeaknesses } from './team-roster.component';
 
 @Component({
   selector: 'my-app',
   template: `
-    <h1>Overwatch Composition Helper</h1>
+    <h1 class="title is-1">Overwatch Composition Helper</h1>
     <div class="wrap">
       <div>
         <team-roster [roster]="enemyRoster"
@@ -36,7 +37,7 @@ import { CompositionAnalyserService } from '../services/composition-analyser.ser
 export class AppComponent {
   private enemyRoster: string[] = ['mccree', 'roadhog', 'lucio', 'genji', 'reinhardt', 'zenyatta'];
   private allyRoster: string[] = ['mccree', 'roadhog', 'lucio', 'genji', 'reinhardt', 'zenyatta'];
-  private weaknesses: string[] = [];
+  private weaknesses: IHeroWeaknesses = {};
 
   constructor(private analyserService: CompositionAnalyserService) { }
 
@@ -55,17 +56,10 @@ export class AppComponent {
   private analyseRoster() {
     const analysis = this.analyserService.analyse(this.enemyRoster, this.allyRoster);
 
-    this.weaknesses = analysis
-      .filter(heroAnalysis => heroAnalysis.counters.weak.length > 0)
-      .map(heroAnalysis => heroAnalysis.hero.name);
+    this.weaknesses = {};
 
-    // tslint:disable-next-line:no-console
-    console.log(this.weaknesses);
-
-    // analysis.forEach(heroAnalysis => {
-    //   heroAnalysis.counters.weak.forEach(weakness => {
-    //     this.advice += "<br/>"
-    //   })
-    // });
+    analysis.forEach(heroAnalysis => {
+      this.weaknesses[heroAnalysis.hero.name] = heroAnalysis.counters.weak.map(e => e.name);
+    });
   }
 }
