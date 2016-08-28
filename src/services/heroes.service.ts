@@ -8,7 +8,7 @@ export { IHero, HeroRole };
 export class HeroesService {
 
   public Ana = heroes.Ana;
-  public Bastion = heroes.Dva;
+  public Bastion = heroes.Bastion;
   public Dva = heroes.Dva;
   public Genji = heroes.Genji;
   public Hanzo = heroes.Hanzo;

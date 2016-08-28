@@ -13,7 +13,8 @@ interface ITeamMember {
       <hero-portrait *ngFor="let teamMember of _roster"
                      [hero]="teamMember.hero"
                      (click)="selectHero(teamMember)"
-                     [class.selecting]="teamMember.selecting">
+                     [class.selecting]="teamMember.selecting"
+                     [class.weak]="!!weaknesses && weaknesses.indexOf('teamMember.hero.name') > -1">
       </hero-portrait>
     </div>
     <hero-selector *ngIf="!!selectedTeamMember"
@@ -42,13 +43,16 @@ export class TeamRosterComponent {
 
   @Output() private rosterChange = new EventEmitter<string[]>();
 
-  @Input() set roster(heroes: string[]) {
+  @Input() private set roster(heroes: string[]) {
     this._roster = heroes.map(name => {
       const hero = this.heroesService.getHero(name);
       const teamMember: ITeamMember = { hero: hero };
       return teamMember;
     });
   }
+
+  // tslint:disable-next-line:no-unused-variable
+  @Input() private weaknesses: { [name: string]: string[] };
 
   constructor(private heroesService: HeroesService) {}
 

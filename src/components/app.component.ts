@@ -7,14 +7,19 @@ import { CompositionAnalyserService } from '../services/composition-analyser.ser
     <h1>Overwatch Composition Helper</h1>
     <div class="wrap">
       <div>
-        <team-roster [roster]="enemyRoster" (rosterChange)="enemyRosterChanged($event)" #enemyTeam>
+        <team-roster [roster]="enemyRoster"
+                     (rosterChange)="enemyRosterChanged($event)"
+                     #enemyTeam>
         </team-roster>
       </div>
       <div>
         <p>VS</p>
       </div>
       <div>
-        <team-roster [roster]="allyRoster" (rosterChange)="allyRosterChanged($event)" #allyTeam>
+        <team-roster [roster]="allyRoster" 
+                     (rosterChange)="allyRosterChanged($event)"
+                     [weaknesses]="weaknesses"
+                     #allyTeam>
         </team-roster>
       </div>
     </div>`,
@@ -31,6 +36,7 @@ import { CompositionAnalyserService } from '../services/composition-analyser.ser
 export class AppComponent {
   private enemyRoster: string[] = ['mccree', 'roadhog', 'lucio', 'genji', 'reinhardt', 'zenyatta'];
   private allyRoster: string[] = ['mccree', 'roadhog', 'lucio', 'genji', 'reinhardt', 'zenyatta'];
+  private weaknesses: string[] = [];
 
   constructor(private analyserService: CompositionAnalyserService) { }
 
@@ -47,6 +53,19 @@ export class AppComponent {
   }
 
   private analyseRoster() {
-    this.analyserService.analyse(this.enemyRoster, this.allyRoster);
+    const analysis = this.analyserService.analyse(this.enemyRoster, this.allyRoster);
+
+    this.weaknesses = analysis
+      .filter(heroAnalysis => heroAnalysis.counters.weak.length > 0)
+      .map(heroAnalysis => heroAnalysis.hero.name);
+
+    // tslint:disable-next-line:no-console
+    console.log(this.weaknesses);
+
+    // analysis.forEach(heroAnalysis => {
+    //   heroAnalysis.counters.weak.forEach(weakness => {
+    //     this.advice += "<br/>"
+    //   })
+    // });
   }
 }

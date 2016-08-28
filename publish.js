@@ -17,8 +17,8 @@ function endsWith(s, suffix) {
 };
 
 const matchJS = /^.*\.js(\.map)?$/i;
-const js = (src) => matchJS.test(src);
 const matchUMD = /^.*\.umd\.min\.js(\.map)?$/i;
+const js = (src) => matchJS.test(src);
 const umd = (src) => matchUMD.test(src);
 
 const file = (f, src) => endsWith(src, f) || endsWith(src, f + '.map');
