@@ -5,8 +5,18 @@ import { IHeroWeaknesses } from './team-roster.component';
 @Component({
   selector: 'my-app',
   template: `
-    <h1 class="title is-1">Overwatch Composition Helper</h1>
-    <div class="wrap">
+    <section class="section">
+      <div class="container">
+        <div class="heading">
+          <h1 class="title is-1">Overwatch Composition Helper</h1>
+          <h2 class="subtitle">
+            Because team composition matters!
+          </h2>
+        </div>
+      </div>
+    </section>
+    <div class="container">
+      <h1 class="title is-1"></h1>
       <div>
         <team-roster [roster]="enemyRoster"
                      (rosterChange)="enemyRosterChanged($event)"
@@ -23,7 +33,22 @@ import { IHeroWeaknesses } from './team-roster.component';
                      #allyTeam>
         </team-roster>
       </div>
-    </div>`,
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <div class="content has-text-centered">
+          <p>
+            <strong>Overcomplicated</strong> by <a href="http://www.codesleuth.co.uk">David Wood</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license">MIT</a>.
+          </p>
+          <p>
+            <a class="icon" href="https://github.com/Overcomplicated/website">
+              <i class="fa fa-github"></i>
+            </a>
+          </p>
+        </div>
+      </div>
+    </footer>`,
   styles: [`
     .wrap {
       width: 100%;
