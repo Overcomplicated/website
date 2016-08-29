@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { HeroesService, IHero } from '../services/heroes.service';
+import { IsClippedTogglerDirective } from '../directives/is-clipped-toggler.directive';
 
 interface ITeamMember {
   hero: IHero;
@@ -34,8 +35,10 @@ export interface IHeroWeaknesses {
         </span>
       </div>
     </div>
-    <hero-selector *ngIf="!!selectedTeamMember"
-                   (heroSelected)="heroSelected($event)">
+    <hero-selector [active]="!!selectedTeamMember"
+                   [isClippedToggler]="!!selectedTeamMember"
+                   (heroSelected)="heroSelected($event)"
+                   (closeClicked)="closeClicked()">
     </hero-selector>
   `,
   styles: [`
@@ -63,12 +66,15 @@ export interface IHeroWeaknesses {
     }
   `],
   providers: [HeroesService],
+  directives: [IsClippedTogglerDirective],
 })
 export class TeamRosterComponent {
   private _roster: ITeamMember[];
   private selectedTeamMember: ITeamMember;
 
   @Output() private rosterChange = new EventEmitter<string[]>();
+
+  @Output() private clipBody = new EventEmitter<boolean>();
 
   @Input() private set roster(heroes: string[]) {
     this._roster = heroes.map(name => {
@@ -91,6 +97,7 @@ export class TeamRosterComponent {
     this.unselectTeamMember(this.selectedTeamMember);
 
     this.selectedTeamMember = teamMember;
+    this.clipBody.emit(true);
     teamMember.selecting = true;
   }
 
@@ -99,6 +106,7 @@ export class TeamRosterComponent {
 
     this.selectedTeamMember.hero = hero;
     this.selectedTeamMember = undefined;
+    this.clipBody.emit(false);
 
     this.emitRosterChanged();
   }
@@ -116,5 +124,11 @@ export class TeamRosterComponent {
   // tslint:disable-next-line:no-unused-variable
   private getHero(name: string): IHero {
     return this.heroesService.getHero(name);
+  }
+
+  // tslint:disable-next-line:no-unused-variable
+  private closeClicked() {
+    this.selectedTeamMember = undefined;
+    this.clipBody.emit(false);
   }
 }
