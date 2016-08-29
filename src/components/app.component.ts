@@ -5,16 +5,7 @@ import { IHeroWeaknesses } from './team-roster.component';
 @Component({
   selector: 'my-app',
   template: `
-    <section class="section">
-      <div class="container">
-        <div class="heading">
-          <h1 class="title is-1">Overwatch Composition Helper</h1>
-          <h2 class="subtitle">
-            Because team composition matters!
-          </h2>
-        </div>
-      </div>
-    </section>
+    <head-nav></head-nav>
     <section class="section">
       <div class="container">
         <div class="heading">

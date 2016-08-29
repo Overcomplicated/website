@@ -5,10 +5,11 @@ import { TeamRosterComponent } from './components/team-roster.component';
 import { HeroPortraitComponent } from './components/hero-portrait.component';
 import { HeroSelectorComponent } from './components/hero-selector.component';
 import { HeroesService } from './services/heroes.service';
+import { HeadNavComponent } from './components/head-nav.component';
 
 @NgModule({
   imports: [BrowserModule],
-  declarations: [TeamRosterComponent, HeroPortraitComponent, HeroSelectorComponent, AppComponent],
+  declarations: [TeamRosterComponent, HeroPortraitComponent, HeroSelectorComponent, HeadNavComponent, AppComponent],
   bootstrap: [AppComponent],
   providers: [HeroesService],
 })
