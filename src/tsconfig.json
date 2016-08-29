@@ -5,9 +5,9 @@
     "module": "system",
     "moduleResolution": "node",
     "noEmitOnError": true,
-    "outDir": "../docs/app",
+    "outFile": "../docs/app/app.js",
     "target": "es5",
-    "inlineSourceMap": true
+    "sourceMap": true
   },
   "exclude": [
     "node_modules"

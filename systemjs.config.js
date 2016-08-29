@@ -2,8 +2,6 @@
   var SystemJS = global.SystemJS;
 
   var map = {
-    'app': 'app',
-
     '@angular': 'vendor/@angular',
     'rxjs': 'vendor/rxjs/bundles/Rx.umd.min.js',
     'rxjs/add/operator/map': 'vendor/rxjs/bundles/Rx.umd.min.js',
@@ -15,9 +13,7 @@
     'rxjs/Observable': 'vendor/rxjs/bundles/Rx.umd.min.js',
   };
 
-  var packages = {
-    'app': { main: 'main.js', defaultExtension: 'js' }
-  };
+  var packages = {};
 
   var angularPackages = [
     'common',
