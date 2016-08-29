@@ -5,11 +5,9 @@ import { Component } from '@angular/core';
   template: `
     <nav class="nav">
       <div class="nav-left">
-        <div class="heading">
-          <a class="nav-item is-brand" href="http://overcomplicated.gg">
-            <h1 class="title">Overcomplicated</h1>
-          </a>
-        </div>
+        <a class="nav-item is-brand" href="http://overcomplicated.gg">
+          <h1 class="title is-4">Overcomplicated</h1>
+        </a>
       </div>
 
       <div class="nav-center">

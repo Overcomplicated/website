@@ -4,23 +4,33 @@ import { IHero, HeroRole } from '../services/heroes.service';
 @Component({
   selector: 'hero-portrait',
   template: `
-    <div class="hero-portrait"
+    <div class="image"
+         [class.is-128x128]="!small"
+         [class.is-64x64]="small"
          [style.background-image]="'url(assets/heroes/' + (small ? 'small/' : '') + hero.name + '.png)'"
-         [class.small]="small"
          [class.support]="isSupport(hero.role)"
          [class.offense]="isOffense(hero.role)"
          [class.defense]="isDefense(hero.role)"
          [class.tank]="isTank(hero.role)">
-      
+      <!--<img src="assets/heroes/{{small ? 'small/' : ''}}{{hero.name}}.png" />-->
     </div>`,
   styles: [`
     :host {
       cursor: pointer;
     }
 
-    .hero-portrait {
-      width: 180px;
-      height: 310px;
+    .is-128x128 {
+      background-size: 128px;
+      background-position-y: 27%;
+    }
+
+    .is-64x64 {
+      background-size: 72px;
+    }
+
+    .image {
+      overflow: hidden;
+      background-repeat: no-repeat;
     }
 
     .support {
@@ -37,11 +47,6 @@ import { IHero, HeroRole } from '../services/heroes.service';
 
     .tank {
       background-color: grey;
-    }
-
-    .small {
-      width: 112px;
-      height: 100px;
     }
   `],
 })

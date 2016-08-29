@@ -23,16 +23,22 @@ export interface IHeroWeaknesses {
                        [class.selecting]="teamMember.selecting"
                        [class.weak]="!!weaknesses && weaknesses.indexOf('teamMember.hero.name') > -1">
         </hero-portrait>
-        <span *ngFor="let strength of teamMember.strengths"
-              class="icon is-large strength"
-              title="{{getHero(strength).displayName}}">
-          <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-        </span>
-        <span *ngFor="let weakness of teamMember.weaknesses"
-              class="icon is-large weakness"
-              title="{{getHero(weakness).displayName}}">
-          <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
-        </span>
+        <div class="advice">
+          <span *ngFor="let strength of teamMember.strengths"
+                class="icon is-large strength"
+                title="{{getHero(strength).displayName}}">
+            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+          </span>
+          <ul>
+            <li *ngFor="let weakness of teamMember.weaknesses">
+              <span class="icon weakness"
+                  title="{{getHero(weakness).displayName}}">
+                <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+              </span>
+              {{getHero(weakness).displayName}}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
     <hero-selector [active]="!!selectedTeamMember"
@@ -63,6 +69,22 @@ export interface IHeroWeaknesses {
       filter: alpha(opacity=40);
 
       cursor: default;
+    }
+
+    .advice {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: left;
+      max-width: 138px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      padding-left: 1.3em;
     }
   `],
   providers: [HeroesService],
