@@ -15,8 +15,8 @@ export interface IHeroWeaknesses {
 @Component({
   selector: 'team-roster',
   template: `
-    <div class="enemy-team">
-      <div *ngFor="let teamMember of _roster">
+    <div class="team">
+      <div class="team-member" *ngFor="let teamMember of _roster">
         <hero-portrait [hero]="teamMember.hero"
                        (click)="selectHero(teamMember)"
                        [class.selecting]="teamMember.selecting"
@@ -39,9 +39,10 @@ export interface IHeroWeaknesses {
     </hero-selector>
   `,
   styles: [`
-    .enemy-team {
+    .team {
       display: flex;
-      justify-content: space-around;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .icon.weakness {

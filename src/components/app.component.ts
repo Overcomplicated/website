@@ -15,25 +15,29 @@ import { IHeroWeaknesses } from './team-roster.component';
         </div>
       </div>
     </section>
-    <div class="container">
-      <h1 class="title is-1"></h1>
-      <div>
+    <section class="section">
+      <div class="container">
+        <div class="heading">
+          <h1 class="title">Enemy Team</h1>
+        </div>
         <team-roster [roster]="enemyRoster"
                      (rosterChange)="enemyRosterChanged($event)"
                      #enemyTeam>
         </team-roster>
       </div>
-      <div>
-        <p>VS</p>
-      </div>
-      <div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="heading">
+          <h1 class="title">Ally Team</h1>
+        </div>
         <team-roster [roster]="allyRoster" 
                      (rosterChange)="allyRosterChanged($event)"
                      [weaknesses]="weaknesses"
                      #allyTeam>
         </team-roster>
       </div>
-    </div>
+    </section>
     <footer class="footer">
       <div class="container">
         <div class="content has-text-centered">
@@ -49,14 +53,6 @@ import { IHeroWeaknesses } from './team-roster.component';
         </div>
       </div>
     </footer>`,
-  styles: [`
-    .wrap {
-      width: 100%;
-      max-width: 1250px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  `],
   providers: [CompositionAnalyserService],
 })
 export class AppComponent {

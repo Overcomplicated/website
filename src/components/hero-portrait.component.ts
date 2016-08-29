@@ -5,12 +5,13 @@ import { IHero, HeroRole } from '../services/heroes.service';
   selector: 'hero-portrait',
   template: `
     <div class="hero-portrait"
-         [style.width]="small ? '112px' : '180px'"
+         [style.background-image]="'url(assets/heroes/' + (small ? 'small/' : '') + hero.name + '.png)'"
+         [class.small]="small"
          [class.support]="isSupport(hero.role)"
          [class.offense]="isOffense(hero.role)"
          [class.defense]="isDefense(hero.role)"
          [class.tank]="isTank(hero.role)">
-      <img src="assets/heroes/{{ small ? 'small/' : '' }}{{hero.name}}.png" />
+      
     </div>`,
   styles: [`
     :host {
@@ -18,6 +19,8 @@ import { IHero, HeroRole } from '../services/heroes.service';
     }
 
     .hero-portrait {
+      width: 180px;
+      height: 310px;
     }
 
     .support {
@@ -34,6 +37,11 @@ import { IHero, HeroRole } from '../services/heroes.service';
 
     .tank {
       background-color: grey;
+    }
+
+    .small {
+      width: 112px;
+      height: 100px;
     }
   `],
 })
