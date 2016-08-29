@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer } from '@angular/core';
 import { CompositionAnalyserService } from '../services/composition-analyser.service';
 import { IHeroWeaknesses } from './team-roster.component';
 
@@ -37,9 +37,17 @@ export class AppComponent implements OnInit {
   private allyRoster: string[] = ['mccree', 'roadhog', 'lucio', 'genji', 'reinhardt', 'zenyatta'];
   private weaknesses: IHeroWeaknesses = {};
 
-  constructor(private analyserService: CompositionAnalyserService) { }
+  constructor(
+    private analyserService: CompositionAnalyserService,
+    private elementRef: ElementRef,
+    private renderer: Renderer
+  ) {}
 
   public ngOnInit() {
+    const e = this.elementRef.nativeElement;
+    this.renderer.setElementClass(e, 'is-loading', false);
+    this.renderer.setElementClass(e, 'is-primary', false);
+    this.renderer.setElementClass(e, 'button', false);
     this.analyseRoster();
   }
 
