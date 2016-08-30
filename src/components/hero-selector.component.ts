@@ -32,6 +32,7 @@ import { HeroesService, IHero } from '../services/heroes.service';
     }
 
     .modal-content {
+      max-height: calc(100vh - 100px);
       margin: 0;
     }
   `],
