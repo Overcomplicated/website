@@ -31,11 +31,8 @@ import { HeroesService, IHero } from '../services/heroes.service';
       justify-content: center;
     }
 
-    .hero-selector .hero {
-    }
-
-    .hero-selector .hero img {
-      width: 100%;
+    .modal-content {
+      margin: 0;
     }
   `],
   providers: [HeroesService],

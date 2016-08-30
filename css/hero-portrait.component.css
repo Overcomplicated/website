@@ -1,0 +1,76 @@
+.ana { background-image: url("assets/heroes/ana.png"); }
+.bastion { background-image: url("assets/heroes/bastion.png"); }
+.dva { background-image: url("assets/heroes/dva.png"); }
+.genji { background-image: url("assets/heroes/genji.png"); }
+.hanzo { background-image: url("assets/heroes/hanzo.png"); }
+.junkrat { background-image: url("assets/heroes/junkrat.png"); }
+.lucio { background-image: url("assets/heroes/lucio.png"); }
+.mccree { background-image: url("assets/heroes/mccree.png"); }
+.mei { background-image: url("assets/heroes/mei.png"); }
+.mercy { background-image: url("assets/heroes/mercy.png"); }
+.pharah { background-image: url("assets/heroes/pharah.png"); }
+.reaper { background-image: url("assets/heroes/reaper.png"); }
+.reinhardt { background-image: url("assets/heroes/reinhardt.png"); }
+.roadhog { background-image: url("assets/heroes/roadhog.png"); }
+.soldier76 { background-image: url("assets/heroes/soldier76.png"); }
+.symmetra { background-image: url("assets/heroes/symmetra.png"); }
+.torbjorn { background-image: url("assets/heroes/torbjorn.png"); }
+.tracer { background-image: url("assets/heroes/tracer.png"); }
+.widowmaker { background-image: url("assets/heroes/widowmaker.png"); }
+.winston { background-image: url("assets/heroes/winston.png"); }
+.zarya { background-image: url("assets/heroes/zarya.png"); }
+.zenyatta { background-image: url("assets/heroes/zenyatta.png"); }
+
+.ana.small { background-image: url("assets/heroes/small/ana.png"); }
+.bastion.small { background-image: url("assets/heroes/small/bastion.png"); }
+.dva.small { background-image: url("assets/heroes/small/dva.png"); }
+.genji.small { background-image: url("assets/heroes/small/genji.png"); }
+.hanzo.small { background-image: url("assets/heroes/small/hanzo.png"); }
+.junkrat.small { background-image: url("assets/heroes/small/junkrat.png"); }
+.lucio.small { background-image: url("assets/heroes/small/lucio.png"); }
+.mccree.small { background-image: url("assets/heroes/small/mccree.png"); }
+.mei.small { background-image: url("assets/heroes/small/mei.png"); }
+.mercy.small { background-image: url("assets/heroes/small/mercy.png"); }
+.pharah.small { background-image: url("assets/heroes/small/pharah.png"); }
+.reaper.small { background-image: url("assets/heroes/small/reaper.png"); }
+.reinhardt.small { background-image: url("assets/heroes/small/reinhardt.png"); }
+.roadhog.small { background-image: url("assets/heroes/small/roadhog.png"); }
+.soldier76.small { background-image: url("assets/heroes/small/soldier76.png"); }
+.symmetra.small { background-image: url("assets/heroes/small/symmetra.png"); }
+.torbjorn.small { background-image: url("assets/heroes/small/torbjorn.png"); }
+.tracer.small { background-image: url("assets/heroes/small/tracer.png"); }
+.widowmaker.small { background-image: url("assets/heroes/small/widowmaker.png"); }
+.winston.small { background-image: url("assets/heroes/small/winston.png"); }
+.zarya.small { background-image: url("assets/heroes/small/zarya.png"); }
+.zenyatta.small { background-image: url("assets/heroes/small/zenyatta.png"); }
+
+.hero-portrait {
+  width: 174px;
+  height: 300px;
+
+  background-size: 100% auto;
+}
+
+.hero-portrait.small {
+  width: 112px;
+  height: 100px;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-portrait {
+    width: 112px;
+    height: 112px;
+
+    background-position-y: 21%
+  }
+
+  .hero-portrait.small {
+    width: 112px;
+    height: 100px;
+  }
+}
+
+.support { background-color: green; }
+.offense { background-color: red; }
+.defense { background-color: blue; }
+.tank { background-color: grey; }
