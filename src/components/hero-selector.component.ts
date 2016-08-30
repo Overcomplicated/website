@@ -38,26 +38,20 @@ import { HeroesService, IHero } from '../services/heroes.service';
   providers: [HeroesService],
 })
 export class HeroSelectorComponent {
-
-  // tslint:disable-next-line:no-unused-variable
   private heroes: IHero[];
 
-  // tslint:disable-next-line:no-unused-variable
   @Input() private active: boolean;
-
   @Output() private heroSelected = new EventEmitter<IHero>();
-
   @Output() private closeClicked = new EventEmitter();
 
   constructor(private heroesService: HeroesService) {
     this.heroes = heroesService.AllHeroes;
   }
 
-  public heroClicked(hero: IHero) {
+  private heroClicked(hero: IHero) {
     this.heroSelected.emit(hero);
   }
 
-  // tslint:disable-next-line:no-unused-variable
   private close() {
     this.closeClicked.emit();
   }

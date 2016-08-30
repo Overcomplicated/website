@@ -32,6 +32,7 @@ import { IHero, HeroRole } from '../services/heroes.service';
          [class.winston]="isHero('winston')"
          [class.zarya]="isHero('zarya')"
          [class.zenyatta]="isHero('zenyatta')">
+      <span>{{hero.displayName}}</span>
     </div>`,
   styleUrls: ['css/hero-portrait.component.css'],
 })

@@ -50,6 +50,7 @@
 .zenyatta.small { background-image: url("assets/heroes/small/zenyatta.png"); }
 
 .hero-portrait {
+  position: relative;
   width: 174px;
   height: 300px;
   margin: 5px;
@@ -60,6 +61,27 @@
 .hero-portrait.small {
   width: 112px;
   height: 100px;
+}
+
+.hero-portrait>span {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+
+  background-color: rgba(40,53,79,.9);
+
+  color: #d0d0dc;
+  text-transform: uppercase;
+
+  font-size: 1.5em;
+  font-weight: bolder;
+}
+
+.hero-portrait.small>span {
+  font-size: 1em;
+  font-weight: bold;
 }
 
 @media screen and (max-width: 768px) {
@@ -73,6 +95,10 @@
   .hero-portrait.small {
     width: 112px;
     height: 100px;
+  }
+  
+  .hero-portrait>span {
+    font-size: 1em;
   }
 }
 
