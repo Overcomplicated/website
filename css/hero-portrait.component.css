@@ -1,3 +1,8 @@
+:host {
+  cursor: pointer;
+  background-color: transparent;
+}
+
 .ana { background-image: url("assets/heroes/ana.png"); }
 .bastion { background-image: url("assets/heroes/bastion.png"); }
 .dva { background-image: url("assets/heroes/dva.png"); }
@@ -47,6 +52,7 @@
 .hero-portrait {
   width: 174px;
   height: 300px;
+  margin: 5px;
 
   background-size: 100% auto;
 }

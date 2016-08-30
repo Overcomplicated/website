@@ -10,55 +10,52 @@ import { IHero, HeroRole } from '../services/heroes.service';
          [class.offense]="isOffense(hero.role)"
          [class.defense]="isDefense(hero.role)"
          [class.tank]="isTank(hero.role)"
-         [class.ana]="hero.name == 'ana'"
-         [class.bastion]="hero.name == 'bastion'"
-         [class.dva]="hero.name == 'dva'"
-         [class.genji]="hero.name == 'genji'"
-         [class.hanzo]="hero.name == 'hanzo'"
-         [class.junkrat]="hero.name == 'junkrat'"
-         [class.lucio]="hero.name == 'lucio'"
-         [class.mccree]="hero.name == 'mccree'"
-         [class.mei]="hero.name == 'mei'"
-         [class.mercy]="hero.name == 'mercy'"
-         [class.pharah]="hero.name == 'pharah'"
-         [class.reaper]="hero.name == 'reaper'"
-         [class.reinhardt]="hero.name == 'reinhardt'"
-         [class.roadhog]="hero.name == 'roadhog'"
-         [class.soldier76]="hero.name == 'soldier76'"
-         [class.symmetra]="hero.name == 'symmetra'"
-         [class.torbjorn]="hero.name == 'torbjorn'"
-         [class.tracer]="hero.name == 'tracer'"
-         [class.widowmaker]="hero.name == 'widowmaker'"
-         [class.winston]="hero.name == 'winston'"
-         [class.zarya]="hero.name == 'zarya'"
-         [class.zenyatta]="hero.name == 'zenyatta'">
+         [class.ana]="isHero('ana')"
+         [class.bastion]="isHero('bastion')"
+         [class.dva]="isHero('dva')"
+         [class.genji]="isHero('genji')"
+         [class.hanzo]="isHero('hanzo')"
+         [class.junkrat]="isHero('junkrat')"
+         [class.lucio]="isHero('lucio')"
+         [class.mccree]="isHero('mccree')"
+         [class.mei]="isHero('mei')"
+         [class.mercy]="isHero('mercy')"
+         [class.pharah]="isHero('pharah')"
+         [class.reaper]="isHero('reaper')"
+         [class.reinhardt]="isHero('reinhardt')"
+         [class.roadhog]="isHero('roadhog')"
+         [class.soldier76]="isHero('soldier76')"
+         [class.symmetra]="isHero('symmetra')"
+         [class.torbjorn]="isHero('torbjorn')"
+         [class.tracer]="isHero('tracer')"
+         [class.widowmaker]="isHero('widowmaker')"
+         [class.winston]="isHero('winston')"
+         [class.zarya]="isHero('zarya')"
+         [class.zenyatta]="isHero('zenyatta')">
     </div>`,
-  styles: [`
-    :host {
-      cursor: pointer;
-    }
-  `],
   styleUrls: ['css/hero-portrait.component.css'],
 })
 export class HeroPortraitComponent {
-  // tslint:disable-next-line:no-unused-variable
   @Input() private hero: IHero;
-  // tslint:disable-next-line:no-unused-variable
   @Input() private small: boolean;
 
-  public isSupport(role: HeroRole): boolean {
+  private isSupport(role: HeroRole): boolean {
     return role === HeroRole.Support;
   }
 
-  public isOffense(role: HeroRole): boolean {
+  private isOffense(role: HeroRole): boolean {
     return role === HeroRole.Offense;
   }
 
-  public isDefense(role: HeroRole): boolean {
+  private isDefense(role: HeroRole): boolean {
     return role === HeroRole.Defense;
   }
 
-  public isTank(role: HeroRole): boolean {
+  private isTank(role: HeroRole): boolean {
     return role === HeroRole.Tank;
+  }
+
+  private isHero(name: string): boolean {
+    return this.hero.name === name;
   }
 }
